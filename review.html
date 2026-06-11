@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ====================================
+         Metadados e Configuração da Página
+         ==================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Cartão - Flashcards</title>
+    
+    <!-- Link do CSS principal -->
+    <!-- Arquivo: css/styles.css - Contém todos os estilos responsivos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ====================================
+         PÁGINA: REVISÃO DE CARTÃO
+         ==================================== -->
+    
+    <!-- Cabeçalho com título -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Flashcards</h1>
+            <p class="subtitle">Produtividade | Inglês para programadores</p>
+            <p class="header-description">Reforço inglês técnico com revisão espaçada e foco total</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal: Revisão de cartão -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Barra de navegação -->
+            <nav class="navbar">
+                <!-- Botão para voltar à página inicial -->
+                <!-- Redireciona para: index.html -->
+                <button class="btn btn-secondary" onclick="navegarPara('index.html')">
+                    ← Voltar
+                </button>
+                <h2>Revisão de Cartão</h2>
+            </nav>
+
+            <!-- ====== SEÇÃO: RESUMO DO PROGRESSO NA REVISÃO ====== -->
+            <!-- Mostra qual cartão está sendo revisado (ex: 1 de 5) -->
+            <section class="review-progress">
+                <!-- ID: reviewCounter - Contém o texto tipo "1 de 10" -->
+                <!-- Vinculado ao arquivo: js/script.js - função atualizarContagemRevisao() -->
+                <p class="counter" id="reviewCounter">Carregando...</p>
+            </section>
+
+            <!-- ====== SEÇÃO: CARTÃO DE REVISÃO (FRENTE - INGLÊS) ====== -->
+            <!-- Mostra a palavra/termo em inglês e suas frases -->
+            <!-- Esta é a primeira parte da revisão (lado inglês do cartão) -->
+            <!-- Vinculado ao arquivo: js/script.js - função exibirProximoCard() -->
+            <section class="review-card-section" id="englishSide">
+                <h3>Palavra / termo (inglês)</h3>
+                
+                <!-- Campo: Palavra/termo em inglês -->
+                <!-- ID: reviewWordEnglish - Será preenchido dinamicamente -->
+                <div class="review-field">
+                    <p id="reviewWordEnglish" class="review-word">-</p>
+                    
+                    <!-- Botão: Ouvir em inglês -->
+                    <!-- Função: Reproduz a pronúncia da palavra em inglês -->
+                    <!-- Vinculado ao arquivo: js/audio.js - função ouvirEmIngles() -->
+                    <button class="btn btn-audio" onclick="ouvirEmIngles()">
+                        🔊 Ouvir em inglês
+                    </button>
+                </div>
+
+                <!-- Campo: Frase em inglês (opcional) -->
+                <!-- ID: reviewPhraseEnglish - Será preenchido dinamicamente se existir -->
+                <!-- Mostra uma dica ou contexto da palavra em inglês -->
+                <div class="review-field" id="englishPhraseContainer">
+                    <p class="field-label">Frase em inglês – opcional</p>
+                    <p id="reviewPhraseEnglish" class="review-phrase">-</p>
+                    
+                    <!-- Botão: Ouvir frase em inglês -->
+                    <!-- Função: Reproduz a pronúncia da frase em inglês -->
+                    <!-- Vinculado ao arquivo: js/audio.js - função ouvirFraseEmIngles() -->
+                    <button class="btn btn-audio" onclick="ouvirFraseEmIngles()">
+                        🔊 Ouvir frase em inglês
+                    </button>
+                </div>
+
+                <!-- Botão: Ver o cartão em português -->
+                <!-- Função: Mostra o lado português do cartão (resposta) -->
+                <!-- Vinculado ao arquivo: js/script.js - função mostrarLadoPortugues() -->
+                <button class="btn btn-primary" onclick="mostrarLadoPortugues()">
+                    Ver o cartão em Português
+                </button>
+            </section>
+
+            <!-- ====== SEÇÃO: CARTÃO DE REVISÃO (VERSO - PORTUGUÊS) ====== -->
+            <!-- Mostra a tradução/explicação em português -->
+            <!-- Fica oculto por padrão e aparece após clicar em "Ver o cartão em Português" -->
+            <!-- ID: portugueseSide - Controlado por JavaScript (hidden/visible) -->
+            <section class="review-card-section hidden" id="portugueseSide">
+                <h3>Cartão em Português</h3>
+                
+                <!-- Campo: Palavra/termo em português -->
+                <!-- ID: reviewWordPortuguese - Será preenchido dinamicamente -->
+                <div class="review-field">
+                    <p id="reviewWordPortuguese" class="review-word">-</p>
+                    
+                    <!-- Botão: Ouvir em português -->
+                    <!-- Função: Reproduz a pronúncia da palavra em português -->
+                    <!-- Vinculado ao arquivo: js/audio.js - função ouvirEmPortugues() -->
+                    <button class="btn btn-audio" onclick="ouvirEmPortugues()">
+                        🔊 Ouvir em Português
+                    </button>
+                </div>
+
+                <!-- Campo: Frase em português (opcional) -->
+                <!-- ID: reviewPhrasePortuguese - Será preenchido dinamicamente se existir -->
+                <!-- Mostra contexto ou explicação da palavra em português -->
+                <div class="review-field" id="portuguesePhraseContainer">
+                    <p class="field-label">Frase em português</p>
+                    <p id="reviewPhrasePortuguese" class="review-phrase">-</p>
+                </div>
+
+                <!-- Botões de navegação após ver a resposta -->
+                <div class="review-navigation">
+                    <!-- Botão: Próximo card -->
+                    <!-- Função: Avança para o próximo cartão na fila de revisão -->
+                    <!-- Lógica: Cards são ordenados por "Próxima revisão (lembrete)" -->
+                    <!-- Vinculado ao arquivo: js/script.js - função proximoCard() -->
+                    <button class="btn btn-primary" onclick="proximoCard()">
+                        Próximo card
+                    </button>
+
+                    <!-- Botão: Finalizar revisão -->
+                    <!-- Função: Volta à página inicial e salva o progresso -->
+                    <!-- Vinculado ao arquivo: js/script.js - função finalizarRevisao() -->
+                    <button class="btn btn-secondary" onclick="finalizarRevisao()">
+                        Finalizar revisão
+                    </button>
+                </div>
+            </section>
+
+            <!-- ====== MENSAGEM: Nenhum card para revisar ====== -->
+            <!-- Aparece quando não há cards para revisar -->
+            <!-- ID: noCardsMessage - Controlado por JavaScript (hidden/visible) -->
+            <section class="empty-message-section hidden" id="noCardsMessage">
+                <p class="empty-message">
+                    Nenhum card para revisar. 
+                    <a href="index.html">Crie seu primeiro card!</a>
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- ====================================
+         SCRIPTS JAVASCRIPT
+         ==================================== -->
+    <!-- Arquivo: js/utils.js - Funções utilitárias comuns -->
+    <script src="js/utils.js"></script>
+    
+    <!-- Arquivo: js/audio.js - Funções para reproduzir áudio (text-to-speech) -->
+    <!-- Contém:
+         - ouvirEmIngles() - pronuncia a palavra em inglês
+         - ouvirFraseEmIngles() - pronuncia a frase em inglês
+         - ouvirEmPortugues() - pronuncia a palavra em português
+         - falarTexto() - função base para reproduzir áudio com Web Speech API
+    -->
+    <script src="js/audio.js"></script>
+    
+    <!-- Arquivo: js/script.js - Lógica da página de revisão -->
+    <!-- Contém:
+         - exibirProximoCard() - carrega o próximo card para revisar
+         - mostrarLadoPortugues() - mostra a resposta (lado português)
+         - proximoCard() - avança para o próximo card
+         - finalizarRevisao() - encerra a sessão de revisão
+         - atualizarContagemRevisao() - atualiza "X de Y" cards
+         - carregarCardsParaRevisao() - ordena cards por "Próxima revisão"
+    -->
+    <script src="js/script.js"></script>
+
+    <!-- Script para carregar a revisão quando a página abre -->
+    <script>
+        // Quando a página carrega, executa a função para iniciar a revisão
+        // Carrega e ordena os cards por "Próxima revisão (lembrete)"
+        document.addEventListener('DOMContentLoaded', function() {
+            exibirProximoCard();
+        });
+    </script>
+
+</body>
+</html>

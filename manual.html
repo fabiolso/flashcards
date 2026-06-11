@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ====================================
+         Metadados e Configuração da Página
+         ==================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Site - Flashcards</title>
+    
+    <!-- Link do CSS principal -->
+    <!-- Arquivo: css/styles.css - Contém todos os estilos responsivos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ====================================
+         PÁGINA: MANUAL DO SITE
+         ==================================== -->
+    
+    <!-- Cabeçalho com título -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Flashcards</h1>
+            <p class="subtitle">Produtividade | Inglês para programadores</p>
+            <p class="header-description">Reforço inglês técnico com revisão espaçada e foco total</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal: Manual -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Barra de navegação -->
+            <nav class="navbar">
+                <!-- Botão para voltar à página inicial -->
+                <!-- Redireciona para: index.html -->
+                <button class="btn btn-secondary" onclick="navegarPara('index.html')">
+                    ← Voltar
+                </button>
+                <h2>Manual do Site</h2>
+            </nav>
+
+            <!-- ====== SEÇÃO: CONTEÚDO DO MANUAL ====== -->
+            <section class="manual-section">
+                <!-- Introdução -->
+                <article class="manual-article">
+                    <h3>Bem-vindo ao Flashcards!</h3>
+                    <p>
+                        Este é um guia completo para ajudá-lo a entender e usar o site de Flashcards para 
+                        aprender e praticar inglês técnico. Siga os passos abaixo conforme sua necessidade.
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 1: Como Criar um Novo Card ====== -->
+                <article class="manual-article">
+                    <h3>1. Como Criar um Novo Card</h3>
+                    <p>Um card é uma unidade de aprendizado contendo uma palavra ou termo em inglês e sua tradução/explicação em português.</p>
+                    
+                    <h4>Passo a Passo:</h4>
+                    <ol>
+                        <li>
+                            <strong>Acesse a página inicial:</strong>
+                            Clique no botão "Início" ou acesse o arquivo <code>index.html</code>
+                        </li>
+                        <li>
+                            <strong>Clique no botão "Criação de novo card":</strong>
+                            Um formulário modal será aberto
+                        </li>
+                        <li>
+                            <strong>Preencha os campos obrigatórios:</strong>
+                            <ul>
+                                <li>
+                                    <strong>Palavra / termo (inglês):</strong> 
+                                    Insira a palavra em inglês (ex: "width", "function", "variable")
+                                </li>
+                                <li>
+                                    <strong>Palavra / termo (português):</strong> 
+                                    Insira a tradução em português (ex: "largura", "função", "variável")
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Preencha os campos opcionais (recomendado):</strong>
+                            <ul>
+                                <li>
+                                    <strong>Frase em inglês:</strong> 
+                                    Uma dica ou contexto em inglês (ex: "The width property defines the element's size")
+                                </li>
+                                <li>
+                                    <strong>Frase em português:</strong> 
+                                    Tradução ou explicação da frase (ex: "A propriedade largura define o tamanho do elemento")
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Clique em "Adesionar novo card / salvar":</strong>
+                            Seu card será salvo e armazenado localmente no navegador
+                        </li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>💡 Dica:</strong> Os cards são armazenados no navegador (localStorage). 
+                        Não feche o cache do navegador para não perder seus cards!
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 2: Como Ver Cards Existentes ====== -->
+                <article class="manual-article">
+                    <h3>2. Como Ver Cards Existentes</h3>
+                    <p>Você pode visualizar, editar ou remover cards já criados.</p>
+                    
+                    <h4>Passo a Passo:</h4>
+                    <ol>
+                        <li>
+                            <strong>Acesse a página inicial:</strong>
+                            Abra o arquivo <code>index.html</code>
+                        </li>
+                        <li>
+                            <strong>Clique no botão "Ver card existentes":</strong>
+                            Você será levado para a página <code>decks.html</code>
+                        </li>
+                        <li>
+                            <strong>Visualize seus cards:</strong>
+                            Todos os cards criados serão exibidos em uma grade responsiva
+                        </li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>ℹ️ Informação:</strong> Nesta página cada card mostra:
+                        <ul>
+                            <li>Palavra/termo em inglês</li>
+                            <li>Frase em inglês (se preenchida)</li>
+                            <li>Botão "Editar" - para modificar o card</li>
+                            <li>Botão "Remover" - para deletar o card</li>
+                        </ul>
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 3: Como Editar um Card ====== -->
+                <article class="manual-article">
+                    <h3>3. Como Editar um Card</h3>
+                    <p>Você pode modificar os dados de um card já criado.</p>
+                    
+                    <h4>Passo a Passo:</h4>
+                    <ol>
+                        <li>
+                            <strong>Acesse a página "Ver card existentes":</strong>
+                            Clique em "Ver card existentes" na página inicial
+                        </li>
+                        <li>
+                            <strong>Encontre o card que deseja editar:</strong>
+                            Procure pela palavra em inglês
+                        </li>
+                        <li>
+                            <strong>Clique no botão "Editar":</strong>
+                            Você voltará à página inicial com o formulário preenchido com os dados do card
+                        </li>
+                        <li>
+                            <strong>Modifique os campos desejados:</strong>
+                            Altere qualquer informação que desejar
+                        </li>
+                        <li>
+                            <strong>Clique em "Adesionar novo card / salvar":</strong>
+                            As alterações serão salvas
+                        </li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>⚠️ Atenção:</strong> A edição substitui completamente o card anterior com os novos dados.
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 4: Como Remover um Card ====== -->
+                <article class="manual-article">
+                    <h3>4. Como Remover um Card</h3>
+                    <p>Você pode deletar permanentemente um card que não deseja mais usar.</p>
+                    
+                    <h4>Passo a Passo:</h4>
+                    <ol>
+                        <li>
+                            <strong>Acesse a página "Ver card existentes":</strong>
+                            Clique em "Ver card existentes" na página inicial
+                        </li>
+                        <li>
+                            <strong>Encontre o card que deseja remover:</strong>
+                            Procure pela palavra em inglês
+                        </li>
+                        <li>
+                            <strong>Clique no botão "Remover":</strong>
+                            Uma confirmação será solicitada
+                        </li>
+                        <li>
+                            <strong>Confirme a remoção:</strong>
+                            O card será deletado permanentemente
+                        </li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>⚠️ Atenção:</strong> A remoção é permanente e não pode ser desfeita. 
+                        Tenha certeza antes de remover um card!
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 5: Como Começar a Revisão ====== -->
+                <article class="manual-article">
+                    <h3>5. Como Começar a Revisão</h3>
+                    <p>
+                        A revisão é onde você estuda seus cards. Os cards são apresentados na ordem de 
+                        "Próxima revisão (lembrete)" - a cada 20 dias um card é adicionado e aparecerá primeiro.
+                    </p>
+                    
+                    <h4>Passo a Passo:</h4>
+                    <ol>
+                        <li>
+                            <strong>Acesse a página inicial:</strong>
+                            Abra o arquivo <code>index.html</code>
+                        </li>
+                        <li>
+                            <strong>Clique no botão "Começar a revisão":</strong>
+                            Você será levado para a página <code>review.html</code>
+                        </li>
+                        <li>
+                            <strong>Veja o primeiro card em inglês:</strong>
+                            O card será exibido com a palavra/termo e frase em inglês
+                        </li>
+                        <li>
+                            <strong>Clique nos botões de áudio:</strong>
+                            <ul>
+                                <li>"🔊 Ouvir em inglês" - para ouvir a pronúncia da palavra</li>
+                                <li>"🔊 Ouvir frase em inglês" - para ouvir a frase</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Tente responder mentalmente:</strong>
+                            Pense na tradução/explicação em português
+                        </li>
+                        <li>
+                            <strong>Clique em "Ver o cartão em Português":</strong>
+                            A resposta (lado português) será revelada
+                        </li>
+                        <li>
+                            <strong>Ouça em português (opcional):</strong>
+                            Clique em "🔊 Ouvir em Português" para ouvir a pronúncia
+                        </li>
+                        <li>
+                            <strong>Avance para o próximo card:</strong>
+                            Clique em "Próximo card" para continuar a revisão
+                        </li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>ℹ️ Informação:</strong> Os cards são revisados em ordem de data - 
+                        os cards criados há mais tempo (e com próxima revisão próxima) aparecem primeiro.
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 6: Sobre a Revisão Espaçada ====== -->
+                <article class="manual-article">
+                    <h3>6. Entendendo o Sistema de Revisão Espaçada</h3>
+                    <p>
+                        Este site usa um sistema de "repetição espaçada" onde cards são revisados em intervalos estratégicos.
+                    </p>
+                    
+                    <h4>Como funciona:</h4>
+                    <ul>
+                        <li>
+                            <strong>Criação do card:</strong> Quando você cria um card, ele é marcado com a data de criação
+                        </li>
+                        <li>
+                            <strong>Próxima revisão (lembrete):</strong> A cada 20 dias que um card é adicionado, 
+                            esse card será o primeiro a aparecer em "Começar a revisão"
+                        </li>
+                        <li>
+                            <strong>Ordem de revisão:</strong> Os cards são revisados em ordem de prioridade - 
+                            cards com "próxima revisão" mais próxima aparecem primeiro
+                        </li>
+                        <li>
+                            <strong>Acompanhamento:</strong> Na página inicial, você pode ver:
+                            <ul>
+                                <li>"Cards criados" - Total de cards criados</li>
+                                <li>"Próxima revisão (lembrete)" - Quando o próximo card importante será revisado</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p class="note">
+                        <strong>💡 Dica:</strong> Use regularmente o site! A revisão espaçada é mais eficaz 
+                        quando você revisita seus cards consistentemente.
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 7: Dicas e Boas Práticas ====== -->
+                <article class="manual-article">
+                    <h3>7. Dicas e Boas Práticas</h3>
+                    <p>Aqui estão algumas dicas para aproveitar ao máximo o Flashcards:</p>
+                    
+                    <ul>
+                        <li>
+                            <strong>Seja específico:</strong> Use palavras e termos reais que você encontra 
+                            em programação (ex: "callback", "async", "promise")
+                        </li>
+                        <li>
+                            <strong>Adicione contexto:</strong> As frases em inglês e português ajudam muito. 
+                            Sempre que possível, adicione exemplos
+                        </li>
+                        <li>
+                            <strong>Use regularmente:</strong> Revisão espaçada funciona melhor com 
+                            consistência. Tente revisar diariamente
+                        </li>
+                        <li>
+                            <strong>Ouça as pronuncias:</strong> Use os botões de áudio para melhorar 
+                            sua pronúncia e compreensão auditiva
+                        </li>
+                        <li>
+                            <strong>Estude em qualquer lugar:</strong> O site é responsivo - 
+                            você pode estudar no desktop, tablet ou celular
+                        </li>
+                        <li>
+                            <strong>Não perca seus cards:</strong> Os dados são salvos localmente no navegador. 
+                            Não limpe o cache do navegador!
+                        </li>
+                        <li>
+                            <strong>Organize seus cards:</strong> Crie cards relacionados em grupos temáticos 
+                            (ex: CSS, JavaScript, React, etc.)
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- ====== SEÇÃO 8: Estrutura do Site ====== -->
+                <article class="manual-article">
+                    <h3>8. Estrutura e Navegação do Site</h3>
+                    <p>Entenda como o site é organizado:</p>
+                    
+                    <div class="site-structure">
+                        <h4>Arquivos Principais:</h4>
+                        <ul>
+                            <li>
+                                <strong><code>index.html</code></strong> - Página inicial (INÍCIO)
+                                <ul>
+                                    <li>Menu de navegação com 4 botões</li>
+                                    <li>Resumo do progresso</li>
+                                    <li>Formulário de criação de cards</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong><code>decks.html</code></strong> - Página de cards existentes (DECKS EXISTENTES)
+                                <ul>
+                                    <li>Lista de todos os cards criados</li>
+                                    <li>Botões para editar e remover</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong><code>review.html</code></strong> - Página de revisão (REVISÃO DE CARTÃO)
+                                <ul>
+                                    <li>Exibição do card em inglês</li>
+                                    <li>Exibição do card em português</li>
+                                    <li>Botões de áudio</li>
+                                    <li>Navegação entre cards</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong><code>manual.html</code></strong> - Este arquivo (MANUAL DO SITE)
+                                <ul>
+                                    <li>Guia completo de uso</li>
+                                    <li>Passo a passo</li>
+                                    <li>Dicas e boas práticas</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>Pastas de Recursos:</h4>
+                        <ul>
+                            <li>
+                                <strong><code>css/</code></strong> - Folhas de estilo
+                                <ul>
+                                    <li><code>styles.css</code> - Estilos responsivos para desktop, tablet e celular</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong><code>js/</code></strong> - Scripts JavaScript
+                                <ul>
+                                    <li><code>script.js</code> - Lógica principal e interatividade</li>
+                                    <li><code>utils.js</code> - Funções utilitárias comuns</li>
+                                    <li><code>audio.js</code> - Funções de áudio (text-to-speech)</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong><code>data/</code></strong> - Pasta para dados (uso futuro)
+                                <ul>
+                                    <li>Atualmente não utilizada</li>
+                                    <li>Reservada para expansões futuras</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="note">
+                        <strong>ℹ️ Informação:</strong> Todos os dados dos cards são armazenados no 
+                        <strong>localStorage</strong> do navegador. Você pode ver e gerenciar usando o Inspetor do Navegador.
+                    </p>
+                </article>
+
+                <!-- ====== SEÇÃO 9: Troubleshooting ====== -->
+                <article class="manual-article">
+                    <h3>9. Solução de Problemas</h3>
+                    
+                    <h4>Problema: Meus cards desapareceram</h4>
+                    <ul>
+                        <li>
+                            <strong>Causa:</strong> Você pode ter limpado o cache/histórico do navegador
+                        </li>
+                        <li>
+                            <strong>Solução:</strong> Os dados são armazenados localmente. Não limpe o cache do navegador. 
+                            Se já foi feito, infelizmente os cards foram perdidos.
+                        </li>
+                    </ul>
+
+                    <h4>Problema: Os botões de áudio não funcionam</h4>
+                    <ul>
+                        <li>
+                            <strong>Causa:</strong> Seu navegador pode não suportar Web Speech API
+                        </li>
+                        <li>
+                            <strong>Solução:</strong> Use navegadores modernos (Chrome, Firefox, Edge). 
+                            Alguns navegadores podem pedir permissão para usar áudio.
+                        </li>
+                    </ul>
+
+                    <h4>Problema: O site não fica responsivo no celular</h4>
+                    <ul>
+                        <li>
+                            <strong>Causa:</strong> Viewport pode não estar configurada corretamente
+                        </li>
+                        <li>
+                            <strong>Solução:</strong> Certifique-se de que JavaScript está habilitado no navegador. 
+                            Tente abrir o site novamente ou limpar o cache do navegador (mantendo os dados do app).
+                        </li>
+                    </ul>
+
+                    <h4>Problema: Não consigo editar um card</h4>
+                    <ul>
+                        <li>
+                            <strong>Causa:</strong> Pode haver um bug ou o card pode ter sido corrompido
+                        </li>
+                        <li>
+                            <strong>Solução:</strong> Remova o card problemático e crie um novo. 
+                            Se o problema persistir, abra o Inspetor do Navegador (F12) e verifique o console.
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- ====== SEÇÃO 10: Contato e Suporte ====== -->
+                <article class="manual-article">
+                    <h3>10. Suporte</h3>
+                    <p>
+                        Se você tiver dúvidas sobre o funcionamento do site, 
+                        por favor, descreva o problema em português de forma clara e detalhada.
+                    </p>
+                    <p>
+                        Informações úteis ao relatar um problema:
+                    </p>
+                    <ul>
+                        <li>Qual navegador você está usando?</li>
+                        <li>Em qual dispositivo (desktop, tablet, celular)?</li>
+                        <li>Qual é a ação que você está tentando fazer?</li>
+                        <li>O que acontece quando você tenta?</li>
+                        <li>Há alguma mensagem de erro?</li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- ====================================
+         SCRIPTS JAVASCRIPT
+         ==================================== -->
+    <!-- Arquivo: js/utils.js - Funções utilitárias comuns -->
+    <script src="js/utils.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!-- ====================================
+     GUIA RÁPIDO - COMO ABRIR O SITE
+     ==================================== -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Rápido - Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #000; }
+        h2 { color: #333; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .box { background-color: #fff; padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; border-left: 4px solid #28a745; }
+        .warning { background-color: #fff3cd; border-left: 4px solid #ffc107; }
+        .info { background-color: #d1ecf1; border-left: 4px solid #17a2b8; }
+        .code { background-color: #f4f4f4; padding: 10px; border-radius: 3px; font-family: monospace; overflow-x: auto; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Flashcards - Guia Rápido de Início</h1>
+
+    <div class="box info">
+        <h2>✅ Tudo Está Pronto!</h2>
+        <p>
+            O site está <strong>100% funcional</strong> e pronto para usar!
+            Não é necessário instalar nada ou usar um servidor.
+        </p>
+    </div>
+
+    <h2>📂 Como Abrir o Site</h2>
+    <div class="box">
+        <h3>Opção 1: Abrir Diretamente (Recomendado)</h3>
+        <ol>
+            <li>Navegue até a pasta do projeto: <code>flashcards V3</code></li>
+            <li>Clique com o botão direito no arquivo <code><strong>index.html</strong></code></li>
+            <li>Selecione "<strong>Abrir com</strong>" → escolha seu navegador preferido</li>
+            <li>Pronto! O site carregará no navegador 🎉</li>
+        </ol>
+    </div>
+
+    <div class="box">
+        <h3>Opção 2: Arrastar e Soltar</h3>
+        <ol>
+            <li>Encontre o arquivo <code><strong>index.html</strong></code> na pasta do projeto</li>
+            <li>Arraste o arquivo para uma janela aberta do seu navegador</li>
+            <li>Pronto! O site carregará 🎉</li>
+        </ol>
+    </div>
+
+    <div class="box">
+        <h3>Opção 3: Via Terminal/PowerShell</h3>
+        <ol>
+            <li>Abra o PowerShell ou Terminal</li>
+            <li>Navegue até a pasta do projeto:
+                <div class="code">cd "Documents\flashcards V3"</div>
+            </li>
+            <li>Execute:
+                <div class="code">Invoke-Item index.html</div>
+                ou
+                <div class="code">start index.html</div>
+            </li>
+        </ol>
+    </div>
+
+    <h2>🌐 Navegadores Recomendados</h2>
+    <div class="box">
+        <p>O site funciona em qualquer navegador moderno:</p>
+        <ul>
+            <li>✅ <strong>Google Chrome</strong> (Recomendado)</li>
+            <li>✅ <strong>Mozilla Firefox</strong></li>
+            <li>✅ <strong>Microsoft Edge</strong></li>
+            <li>✅ <strong>Safari</strong> (Mac/iPhone/iPad)</li>
+        </ul>
+    </div>
+
+    <h2>📂 Estrutura de Arquivos</h2>
+    <div class="box code">
+flashcards V3/
+├── <strong>index.html</strong>          ← ABRA ESTE ARQUIVO! 🎯
+├── decks.html
+├── review.html
+├── manual.html
+│
+├── css/
+│   └── styles.css
+│
+├── js/
+│   ├── script.js
+│   ├── utils.js
+│   └── audio.js
+│
+├── data/
+│
+├── README.md
+└── ARQUITETURA.txt
+    </div>
+
+    <h2>🎯 Primeiro Acesso</h2>
+    <div class="box success">
+        <ol>
+            <li>Abra <code>index.html</code> no navegador</li>
+            <li>Clique em "<strong>Criação de novo card</strong>"</li>
+            <li>Preencha um exemplo:
+                <ul>
+                    <li>Palavra em inglês: <code>responsive</code></li>
+                    <li>Frase em inglês: <code>Web design that adapts to screen size</code></li>
+                    <li>Palavra em português: <code>responsivo</code></li>
+                    <li>Frase em português: <code>Design web que se adapta ao tamanho da tela</code></li>
+                </ul>
+            </li>
+            <li>Clique em "<strong>Adesionar novo card / salvar</strong>"</li>
+            <li>Parabéns! Seu primeiro card foi criado! 🎉</li>
+            <li>Agora clique em "<strong>Começar a revisão</strong>" para revisar</li>
+        </ol>
+    </div>
+
+    <h2>💾 Onde Estão Meus Dados?</h2>
+    <div class="box warning">
+        <p><strong>⚠️ Importante:</strong></p>
+        <ul>
+            <li>Seus cards são armazenados <strong>localmente no navegador</strong></li>
+            <li>Nenhum dado é enviado para um servidor</li>
+            <li>Dados persistem mesmo após fechar o navegador</li>
+            <li>Se você limpar o cache/histórico do navegador, <strong>seus cards serão perdidos!</strong></li>
+        </ul>
+    </div>
+
+    <h2>🔧 Desenvolvimento / Edição</h2>
+    <div class="box">
+        <p>Se quiser editar o código ou adicionar mais funcionalidades:</p>
+        <ol>
+            <li>Abra a pasta do projeto em seu editor favorito (VS Code, Sublime Text, etc)</li>
+            <li>Todos os arquivos possuem <strong>comentários detalhados</strong> explicando o que fazem</li>
+            <li>Veja o arquivo <code><strong>ARQUITETURA.txt</strong></code> para entender como tudo se conecta</li>
+            <li>Edite os arquivos conforme necessário</li>
+            <li>Recarregue a página no navegador para ver as mudanças (Ctrl+Shift+R para hard refresh)</li>
+        </ol>
+    </div>
+
+    <h2>📱 Responsividade</h2>
+    <div class="box info">
+        <p>O site é totalmente responsivo e funciona perfeitamente em:</p>
+        <ul>
+            <li>📱 Celular (320px+)</li>
+            <li>📊 Tablet (768px+)</li>
+            <li>💻 Desktop (1024px+)</li>
+        </ul>
+        <p>Você pode testar em diferentes tamanhos de tela:</p>
+        <ol>
+            <li>Abra o navegador</li>
+            <li>Pressione <strong>F12</strong> (abre o inspetor)</li>
+            <li>Clique no ícone de <strong>"Toggle device toolbar"</strong></li>
+            <li>Escolha diferentes dispositivos para testar</li>
+        </ol>
+    </div>
+
+    <h2>🔊 Áudio (Text-to-Speech)</h2>
+    <div class="box info">
+        <p>O site usa a <strong>Web Speech API</strong> para pronunciar palavras:</p>
+        <ul>
+            <li>✅ Funciona em navegadores modernos</li>
+            <li>⚠️ Certifique-se de que o volume está ativado</li>
+            <li>⚠️ Alguns navegadores podem pedir permissão para usar áudio</li>
+        </ul>
+    </div>
+
+    <h2>❓ Dúvidas / Problemas</h2>
+    <div class="box warning">
+        <p>Se encontrar algum problema:</p>
+        <ol>
+            <li>Consulte o arquivo <code><strong>README.md</strong></code></li>
+            <li>Consulte o arquivo <code><strong>manual.html</strong></code> (abra dentro do site)</li>
+            <li>Verifique o console do navegador (F12 → Console)</li>
+            <li>Tente abrir em outro navegador</li>
+            <li>Recarregue a página (Ctrl+Shift+R)</li>
+        </ol>
+    </div>
+
+    <h2>✨ Funcionalidades</h2>
+    <div class="box success">
+        <ul>
+            <li>✅ Criar cards com inglês e português</li>
+            <li>✅ Editar cards existentes</li>
+            <li>✅ Remover cards</li>
+            <li>✅ Revisar cards com áudio</li>
+            <li>✅ Revisão espaçada (cards ordenados por prioridade)</li>
+            <li>✅ Todos os dados salvos localmente</li>
+            <li>✅ Responsivo (mobile, tablet, desktop)</li>
+            <li>✅ Sem dependências externas</li>
+            <li>✅ 100% gratuito e de código aberto</li>
+        </ul>
+    </div>
+
+    <h2>🎓 Próximos Passos</h2>
+    <div class="box">
+        <ol>
+            <li>Abra o site em <code>index.html</code></li>
+            <li>Crie alguns cards com suas palavras em inglês favoritas</li>
+            <li>Use regularmente para melhorar seu inglês técnico</li>
+            <li>Customize cores/estilos editando <code>css/styles.css</code> se desejar</li>
+            <li>Divirta-se aprendendo! 🚀</li>
+        </ol>
+    </div>
+
+    <div class="box success">
+        <h3>🎉 Bem-vindo ao Flashcards!</h3>
+        <p>Obrigado por usar este site. Esperamos que ele ajude você a melhorar seu inglês técnico!</p>
+        <p><strong>Aproveite! 🚀📚</strong></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ====================================
+         Metadados e Configuração da Página
+         ==================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards Existentes - Flashcards</title>
+    
+    <!-- Link do CSS principal -->
+    <!-- Arquivo: css/styles.css - Contém todos os estilos responsivos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ====================================
+         PÁGINA: DECKS EXISTENTES
+         ==================================== -->
+    
+    <!-- Cabeçalho com título -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Flashcards</h1>
+            <p class="subtitle">Produtividade | Inglês para programadores</p>
+            <p class="header-description">Reforço inglês técnico com revisão espaçada e foco total</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal: Lista de cards existentes -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Barra de navegação -->
+            <nav class="navbar">
+                <!-- Botão para voltar à página inicial -->
+                <!-- Redireciona para: index.html -->
+                <button class="btn btn-secondary" onclick="navegarPara('index.html')">
+                    ← Voltar
+                </button>
+                <h2>Decks Existentes</h2>
+            </nav>
+
+            <!-- ====== SEÇÃO: LISTA DE CARDS ====== -->
+            <!-- Esta seção exibe todos os cards criados -->
+            <!-- Cada card mostra:
+                 1. Palavra/termo em inglês
+                 2. Frase em inglês (se existir)
+                 3. Botão Editar - vai para index.html para editar
+                 4. Botão Remover - deleta o card
+                 
+                 Vinculado ao arquivo: js/script.js
+                 - função carregarListaCards() - carrega todos os cards do localStorage
+                 - função editarCard() - prepara a edição de um card
+                 - função removerCard() - remove um card
+            -->
+            <section class="cards-section">
+                <!-- Container que será preenchido dinamicamente com JavaScript -->
+                <!-- ID usado por: js/script.js - função carregarListaCards() -->
+                <div id="cardsContainer" class="cards-grid">
+                    <!-- Os cards serão inseridos aqui dinamicamente -->
+                    <!-- Mensagem padrão enquanto carrega -->
+                    <p class="empty-message">Carregando cards...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ====================================
+         SCRIPTS JAVASCRIPT
+         ==================================== -->
+    <!-- Arquivo: js/utils.js - Funções utilitárias comuns -->
+    <script src="js/utils.js"></script>
+    
+    <!-- Arquivo: js/script.js - Lógica para carregar e gerenciar cards existentes -->
+    <!-- Contém:
+         - carregarListaCards() - carrega e exibe todos os cards
+         - editarCard() - abre um card para edição
+         - removerCard() - remove um card do localStorage
+         - renderizarCard() - cria a estrutura HTML de um card individual
+    -->
+    <script src="js/script.js"></script>
+    
+    <!-- Script para carregar a lista quando a página abre -->
+    <script>
+        // Quando a página carrega, executa a função para mostrar todos os cards
+        // ID do container: cardsContainer
+        document.addEventListener('DOMContentLoaded', carregarListaCards);
+    </script>
+
+</body>
+</html>

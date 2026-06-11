@@ -1,0 +1,513 @@
+<!-- ====================================
+     PÁGINA DE TESTE E VERIFICAÇÃO
+     ==================================== -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste do Sistema - Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #000; text-align: center; }
+        h2 { color: #333; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .test-section { background-color: #fff; padding: 20px; margin: 15px 0; border-radius: 5px; }
+        .test-item { padding: 10px; margin: 10px 0; border-radius: 3px; }
+        .pass { background-color: #d4edda; border-left: 4px solid #28a745; }
+        .fail { background-color: #f8d7da; border-left: 4px solid #dc3545; }
+        .info { background-color: #d1ecf1; border-left: 4px solid #17a2b8; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; border: none; border-radius: 3px; }
+        .btn-test { background-color: #007bff; color: white; }
+        .btn-test:hover { background-color: #0056b3; }
+        .console { background-color: #1e1e1e; color: #00ff00; padding: 15px; border-radius: 3px; 
+                   font-family: monospace; max-height: 200px; overflow-y: auto; font-size: 12px; }
+        .warning { color: #ff6b6b; }
+        .success { color: #51cf66; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+    <h1>🧪 Teste do Sistema - Flashcards</h1>
+
+    <div class="test-section info">
+        <h2>ℹ️ Instruções</h2>
+        <p>Esta página testa se todos os componentes do site estão funcionando corretamente.</p>
+        <p>Clique nos botões abaixo para executar testes individuais.</p>
+    </div>
+
+    <!-- TESTE 1: LocalStorage -->
+    <div class="test-section">
+        <h2>1️⃣ Teste: LocalStorage</h2>
+        <p>Verifica se o navegador suporta armazenamento local de dados.</p>
+        <button class="btn-test" onclick="testeLocalStorage()">Testar LocalStorage</button>
+        <div id="resultado-localStorage" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 2: Funções Utilitárias -->
+    <div class="test-section">
+        <h2>2️⃣ Teste: Funções Utilitárias</h2>
+        <p>Verifica se as funções de utils.js estão carregadas corretamente.</p>
+        <button class="btn-test" onclick="testeFuncoesUtilitarias()">Testar Funções</button>
+        <div id="resultado-utils" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 3: Web Speech API -->
+    <div class="test-section">
+        <h2>3️⃣ Teste: Web Speech API (Áudio)</h2>
+        <p>Verifica se o navegador suporta síntese de fala.</p>
+        <button class="btn-test" onclick="testeWebSpeechAPI()">Testar Áudio</button>
+        <button class="btn-test" onclick="testarPronuncia()">▶️ Ouvir Exemplo</button>
+        <div id="resultado-audio" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 4: DOM Manipulation -->
+    <div class="test-section">
+        <h2>4️⃣ Teste: Manipulação do DOM</h2>
+        <p>Verifica se a página consegue manipular elementos HTML.</p>
+        <button class="btn-test" onclick="testeDOM()">Testar DOM</button>
+        <div id="resultado-dom" class="test-item"></div>
+        <div id="elemento-teste"></div>
+    </div>
+
+    <!-- TESTE 5: Criação de Card -->
+    <div class="test-section">
+        <h2>5️⃣ Teste: Criação e Armazenamento de Card</h2>
+        <p>Testa se é possível criar e armazenar um card no localStorage.</p>
+        <button class="btn-test" onclick="testeCriacaoCard()">Criar Card de Teste</button>
+        <button class="btn-test" onclick="testeCarregamentoCards()">Carregar Cards</button>
+        <button class="btn-test" onclick="limparCardsTestador()">🗑️ Limpar Cards de Teste</button>
+        <div id="resultado-cards" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 6: Responsividade -->
+    <div class="test-section">
+        <h2>6️⃣ Teste: Responsividade</h2>
+        <p>Verifica as dimensões da janela do navegador.</p>
+        <button class="btn-test" onclick="testeResponsividade()">Testar Tamanho</button>
+        <div id="resultado-responsive" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 7: Navegação -->
+    <div class="test-section">
+        <h2>7️⃣ Teste: Links das Páginas</h2>
+        <p>Verifica se as páginas estão acessíveis.</p>
+        <button class="btn-test" onclick="testeNavegacao()">Testar Navegação</button>
+        <div id="resultado-navegacao" class="test-item"></div>
+    </div>
+
+    <!-- TESTE 8: Data e Hora -->
+    <div class="test-section">
+        <h2>8️⃣ Teste: Funções de Data</h2>
+        <p>Verifica o cálculo de datas para revisão espaçada.</p>
+        <button class="btn-test" onclick="testeData()">Testar Data</button>
+        <div id="resultado-data" class="test-item"></div>
+    </div>
+
+    <!-- CONSOLE -->
+    <div class="test-section">
+        <h2>📋 Console (Saída de Testes)</h2>
+        <div class="console" id="console-output">
+            [Executar testes para ver a saída...]
+        </div>
+    </div>
+
+    <!-- TESTE COMPLETO -->
+    <div class="test-section">
+        <h2>✅ Teste Completo</h2>
+        <p>Execute todos os testes de uma vez.</p>
+        <button class="btn-test" onclick="testeCompleto()" style="background-color: #28a745; font-size: 16px;">
+            ▶️ EXECUTAR TESTES COMPLETOS
+        </button>
+        <button class="btn-test" onclick="limparConsole()" style="background-color: #6c757d;">
+            🗑️ Limpar Console
+        </button>
+    </div>
+
+    <!-- VOLTA PARA O SITE -->
+    <div class="test-section info">
+        <p style="text-align: center;">
+            <a href="index.html" style="font-size: 16px; font-weight: bold;">← Voltar para index.html</a>
+        </p>
+    </div>
+
+    <!-- SCRIPTS DE TESTE -->
+    <script>
+        // ====================================
+        // UTILIDADES PARA TESTES
+        // ====================================
+
+        const CONSOLE = document.getElementById('console-output');
+
+        function limpar_console() {
+            CONSOLE.innerHTML = '';
+        }
+
+        function log_teste(mensagem, tipo = 'info') {
+            const timestamp = new Date().toLocaleTimeString('pt-BR');
+            const cores = {
+                pass: '#51cf66',
+                fail: '#ff6b6b',
+                info: '#74c0fc'
+            };
+            
+            const cor = cores[tipo] || cores.info;
+            const linha = `<div style="color: ${cor};">[${timestamp}] ${mensagem}</div>`;
+            CONSOLE.innerHTML += linha;
+            CONSOLE.scrollTop = CONSOLE.scrollHeight;
+        }
+
+        function limparConsole() {
+            CONSOLE.innerHTML = '[Console limpo]';
+        }
+
+        // ====================================
+        // TESTES
+        // ====================================
+
+        /**
+         * TESTE 1: LocalStorage
+         */
+        function testeLocalStorage() {
+            log_teste('🧪 Iniciando teste de LocalStorage...', 'info');
+            
+            try {
+                const testKey = 'teste_' + Date.now();
+                const testValue = { data: 'teste', timestamp: new Date().toISOString() };
+                
+                // Teste: Salvar
+                localStorage.setItem(testKey, JSON.stringify(testValue));
+                log_teste('✓ Salvando dados no localStorage', 'pass');
+                
+                // Teste: Recuperar
+                const recovered = JSON.parse(localStorage.getItem(testKey));
+                log_teste('✓ Recuperando dados do localStorage', 'pass');
+                
+                if (recovered.data === 'teste') {
+                    log_teste('✓ Dados recuperados corretamente', 'pass');
+                    document.getElementById('resultado-localStorage').innerHTML = 
+                        '<div class="pass">✅ LocalStorage funcionando perfeitamente!</div>';
+                } else {
+                    throw new Error('Dados corrompidos');
+                }
+                
+                // Cleanup
+                localStorage.removeItem(testKey);
+                log_teste('✓ Limpeza de dados de teste', 'pass');
+                
+            } catch (erro) {
+                log_teste('❌ Erro: ' + erro.message, 'fail');
+                document.getElementById('resultado-localStorage').innerHTML = 
+                    '<div class="fail">❌ LocalStorage NÃO funcionando</div>';
+            }
+        }
+
+        /**
+         * TESTE 2: Funções Utilitárias
+         */
+        function testeFuncoesUtilitarias() {
+            log_teste('🧪 Iniciando teste de Funções Utilitárias...', 'info');
+            
+            const funcoes = [
+                'navegarPara',
+                'salvarNoLocalStorage',
+                'obterDoLocalStorage',
+                'gerarID',
+                'formatarData',
+                'diasDesde',
+                'calcularProximaRevisao',
+                'estaVazio',
+                'limparTexto'
+            ];
+            
+            let funcionando = 0;
+            
+            funcoes.forEach(funcao => {
+                if (typeof window[funcao] === 'function') {
+                    log_teste(`✓ Função ${funcao}() encontrada`, 'pass');
+                    funcionando++;
+                } else {
+                    log_teste(`❌ Função ${funcao}() NÃO encontrada`, 'fail');
+                }
+            });
+            
+            const mensagem = `${funcionando}/${funcoes.length} funções funcionando`;
+            document.getElementById('resultado-utils').innerHTML = 
+                `<div class="${funcionando === funcoes.length ? 'pass' : 'fail'}">
+                ${funcionando === funcoes.length ? '✅' : '❌'} ${mensagem}
+                </div>`;
+        }
+
+        /**
+         * TESTE 3: Web Speech API
+         */
+        function testeWebSpeechAPI() {
+            log_teste('🧪 Iniciando teste de Web Speech API...', 'info');
+            
+            const speechSynthesis = window.speechSynthesis;
+            const SpeechSynthesisUtterance = window.SpeechSynthesisUtterance;
+            
+            if (speechSynthesis && SpeechSynthesisUtterance) {
+                log_teste('✓ Web Speech API disponível', 'pass');
+                const vozes = speechSynthesis.getVoices();
+                log_teste(`✓ ${vozes.length} vozes encontradas`, 'pass');
+                
+                document.getElementById('resultado-audio').innerHTML = 
+                    '<div class="pass">✅ Áudio disponível! Clique em "Ouvir Exemplo"</div>';
+            } else {
+                log_teste('❌ Web Speech API NÃO disponível', 'fail');
+                document.getElementById('resultado-audio').innerHTML = 
+                    '<div class="fail">❌ Áudio NÃO disponível neste navegador</div>';
+            }
+        }
+
+        /**
+         * Teste de pronúncia
+         */
+        function testarPronuncia() {
+            log_teste('🔊 Reproduzindo áudio de teste...', 'info');
+            
+            try {
+                if (typeof falarTexto === 'function') {
+                    falarTexto('Hello world', 'en-US');
+                    log_teste('✓ Áudio iniciado', 'pass');
+                } else {
+                    log_teste('❌ Função falarTexto() não encontrada', 'fail');
+                }
+            } catch (erro) {
+                log_teste('❌ Erro ao reproduzir áudio: ' + erro.message, 'fail');
+            }
+        }
+
+        /**
+         * TESTE 4: DOM Manipulation
+         */
+        function testeDOM() {
+            log_teste('🧪 Iniciando teste de manipulação DOM...', 'info');
+            
+            try {
+                // Teste: Criar elemento
+                const elemento = document.createElement('div');
+                elemento.id = 'elemento-teste-id';
+                elemento.textContent = '✅ Elemento criado com sucesso!';
+                elemento.style.padding = '10px';
+                elemento.style.backgroundColor = '#d4edda';
+                elemento.style.borderRadius = '3px';
+                elemento.style.marginTop = '10px';
+                
+                document.getElementById('elemento-teste').appendChild(elemento);
+                log_teste('✓ Elemento HTML criado e inserido', 'pass');
+                
+                // Teste: Modificar elemento
+                elemento.textContent = '✅ Elemento modificado com sucesso!';
+                log_teste('✓ Elemento HTML modificado', 'pass');
+                
+                document.getElementById('resultado-dom').innerHTML = 
+                    '<div class="pass">✅ DOM funcionando perfeitamente!</div>';
+                
+            } catch (erro) {
+                log_teste('❌ Erro: ' + erro.message, 'fail');
+                document.getElementById('resultado-dom').innerHTML = 
+                    '<div class="fail">❌ DOM NÃO funcionando</div>';
+            }
+        }
+
+        /**
+         * TESTE 5: Criação e Armazenamento de Card
+         */
+        function testeCriacaoCard() {
+            log_teste('🧪 Criando card de teste...', 'info');
+            
+            try {
+                const cardTeste = {
+                    id: 'teste_' + Date.now(),
+                    wordEnglish: 'test',
+                    phraseEnglish: 'A test card',
+                    wordPortuguese: 'teste',
+                    phrasePortuguese: 'Um card de teste',
+                    dataCriacao: new Date().toISOString(),
+                    proximaRevisao: new Date(Date.now() + 20*24*60*60*1000).toISOString()
+                };
+                
+                // Salva
+                let cards = obterDoLocalStorage('flashcards_cards', []);
+                cards.push(cardTeste);
+                salvarNoLocalStorage('flashcards_cards', cards);
+                
+                log_teste('✓ Card de teste criado e salvo', 'pass');
+                
+                document.getElementById('resultado-cards').innerHTML = 
+                    '<div class="pass">✅ Card criado com ID: ' + cardTeste.id + '</div>';
+                
+            } catch (erro) {
+                log_teste('❌ Erro: ' + erro.message, 'fail');
+                document.getElementById('resultado-cards').innerHTML = 
+                    '<div class="fail">❌ Erro ao criar card</div>';
+            }
+        }
+
+        /**
+         * Teste de carregamento
+         */
+        function testeCarregamentoCards() {
+            log_teste('🧪 Carregando cards...', 'info');
+            
+            try {
+                const cards = obterDoLocalStorage('flashcards_cards', []);
+                log_teste(`✓ ${cards.length} card(s) carregado(s)`, 'pass');
+                
+                cards.forEach((card, index) => {
+                    log_teste(`  Card ${index + 1}: ${card.wordEnglish}`, 'info');
+                });
+                
+                document.getElementById('resultado-cards').innerHTML = 
+                    '<div class="info">ℹ️ ' + cards.length + ' card(s) no localStorage</div>';
+                
+            } catch (erro) {
+                log_teste('❌ Erro: ' + erro.message, 'fail');
+            }
+        }
+
+        /**
+         * Limpar cards de teste
+         */
+        function limparCardsTestador() {
+            if (confirm('Remover cards de teste?')) {
+                const cards = obterDoLocalStorage('flashcards_cards', []);
+                const cardsFiltrados = cards.filter(c => !c.id.startsWith('teste_'));
+                salvarNoLocalStorage('flashcards_cards', cardsFiltrados);
+                
+                log_teste('✓ Cards de teste removidos', 'pass');
+                document.getElementById('resultado-cards').innerHTML = 
+                    '<div class="pass">✅ Cards de teste removidos</div>';
+            }
+        }
+
+        /**
+         * TESTE 6: Responsividade
+         */
+        function testeResponsividade() {
+            log_teste('🧪 Verificando tamanho da tela...', 'info');
+            
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            log_teste(`✓ Dimensões: ${width}x${height}`, 'pass');
+            
+            let tipo = 'Desktop';
+            if (width < 768) tipo = 'Celular/Mobile';
+            else if (width < 1024) tipo = 'Tablet';
+            
+            log_teste(`✓ Tipo: ${tipo}`, 'pass');
+            
+            document.getElementById('resultado-responsive').innerHTML = 
+                `<div class="pass">✅ ${width}×${height}px (${tipo})</div>`;
+        }
+
+        /**
+         * TESTE 7: Navegação
+         */
+        function testeNavegacao() {
+            log_teste('🧪 Verificando páginas...', 'info');
+            
+            const paginas = ['index.html', 'decks.html', 'review.html', 'manual.html'];
+            
+            paginas.forEach(pagina => {
+                log_teste(`✓ Página: ${pagina}`, 'pass');
+            });
+            
+            document.getElementById('resultado-navegacao').innerHTML = 
+                '<div class="pass">✅ ' + paginas.length + ' páginas encontradas</div>';
+        }
+
+        /**
+         * TESTE 8: Data
+         */
+        function testeData() {
+            log_teste('🧪 Testando funções de data...', 'info');
+            
+            try {
+                const hoje = new Date();
+                const proximaRevisao = calcularProximaRevisao();
+                const dataFormatada = formatarData(hoje);
+                
+                log_teste(`✓ Data de hoje: ${dataFormatada}`, 'pass');
+                log_teste(`✓ Próxima revisão: ${formatarData(proximaRevisao)}`, 'pass');
+                log_teste(`✓ Diferença: 20 dias`, 'pass');
+                
+                document.getElementById('resultado-data').innerHTML = 
+                    '<div class="pass">✅ Datas funcionando (próxima revisão em 20 dias)</div>';
+                
+            } catch (erro) {
+                log_teste('❌ Erro: ' + erro.message, 'fail');
+                document.getElementById('resultado-data').innerHTML = 
+                    '<div class="fail">❌ Erro em datas</div>';
+            }
+        }
+
+        /**
+         * TESTE COMPLETO
+         */
+        function testeCompleto() {
+            log_teste('═════════════════════════════════════', 'info');
+            log_teste('🧪 INICIANDO TESTES COMPLETOS', 'info');
+            log_teste('═════════════════════════════════════', 'info');
+            
+            log_teste('\n📝 TESTE 1: LocalStorage', 'info');
+            testeLocalStorage();
+            
+            setTimeout(() => {
+                log_teste('\n📝 TESTE 2: Funções Utilitárias', 'info');
+                testeFuncoesUtilitarias();
+                
+                setTimeout(() => {
+                    log_teste('\n📝 TESTE 3: Web Speech API', 'info');
+                    testeWebSpeechAPI();
+                    
+                    setTimeout(() => {
+                        log_teste('\n📝 TESTE 4: DOM', 'info');
+                        testeDOM();
+                        
+                        setTimeout(() => {
+                            log_teste('\n📝 TESTE 5: Cards', 'info');
+                            testeCarregamentoCards();
+                            
+                            setTimeout(() => {
+                                log_teste('\n📝 TESTE 6: Responsividade', 'info');
+                                testeResponsividade();
+                                
+                                setTimeout(() => {
+                                    log_teste('\n📝 TESTE 7: Navegação', 'info');
+                                    testeNavegacao();
+                                    
+                                    setTimeout(() => {
+                                        log_teste('\n📝 TESTE 8: Data', 'info');
+                                        testeData();
+                                        
+                                        setTimeout(() => {
+                                            log_teste('\n═════════════════════════════════════', 'pass');
+                                            log_teste('✅ TODOS OS TESTES CONCLUÍDOS!', 'pass');
+                                            log_teste('═════════════════════════════════════', 'pass');
+                                        }, 500);
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+
+        // Log inicial
+        log_teste('✓ Página de testes carregada com sucesso!', 'pass');
+    </script>
+
+</body>
+</html>

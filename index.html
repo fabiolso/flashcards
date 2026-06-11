@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ====================================
+         Metadados e Configuração da Página
+         ==================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Reforço Inglês Técnico</title>
+    
+    <!-- Link do CSS principal -->
+    <!-- Arquivo: css/styles.css - Contém todos os estilos responsivos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ====================================
+         PÁGINA INICIAL (INÍCIO)
+         ==================================== -->
+    
+    <!-- Cabeçalho com título e subtítulo da aplicação -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Flashcards</h1>
+            <p class="subtitle">Produtividade | Inglês para programadores</p>
+            <p class="header-description">Reforço inglês técnico com revisão espaçada e foco total</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal da página inicial -->
+    <main class="main-content">
+        <div class="container">
+            <!-- ====== SEÇÃO 1: MENU DE NAVEGAÇÃO ====== -->
+            <!-- Esta seção contém os botões principais para:
+                 1. Criar novo card - vai para formulário de criação
+                 2. Ver cards existentes - vai para página decks.html
+                 3. Começar revisão - vai para página review.html
+                 4. Manual do site - vai para página manual.html
+            -->
+            <section class="menu-section">
+                <div class="menu-grid">
+                    <!-- Botão: Criar novo card -->
+                    <!-- Abre modal ou formulário para criar novo flashcard -->
+                    <button class="btn btn-primary" onclick="abrirFormularioCriacao()">
+                        Criação de novo card
+                    </button>
+
+                    <!-- Botão: Ver cards existentes -->
+                    <!-- Redireciona para decks.html onde mostra todos os cards -->
+                    <button class="btn btn-primary" onclick="navegarPara('decks.html')">
+                        Ver card existentes
+                    </button>
+
+                    <!-- Botão: Começar revisão -->
+                    <!-- Redireciona para review.html iniciando a sessão de revisão -->
+                    <!-- Os cards serão ordenados por "Próxima revisão (lembrete)" -->
+                    <button class="btn btn-primary" onclick="navegarPara('review.html')">
+                        Começar a revisão
+                    </button>
+
+                    <!-- Botão: Manual do site -->
+                    <!-- Redireciona para manual.html com instruções de uso -->
+                    <button class="btn btn-primary" onclick="navegarPara('manual.html')">
+                        Manual do site
+                    </button>
+                </div>
+            </section>
+
+            <!-- ====== SEÇÃO 2: RESUMO DO PROGRESSO ====== -->
+            <!-- Esta seção mostra estatísticas de cards criados e próxima revisão -->
+            <!-- Os valores aqui são preenchidos automaticamente quando cards são criados -->
+            <section class="progress-section">
+                <h2 class="section-title">Resumo do progresso</h2>
+                <div class="progress-grid">
+                    <!-- Card 1: Total de cards criados -->
+                    <!-- Este valor é atualizado automaticamente via JavaScript -->
+                    <!-- Vinculado ao arquivo: js/script.js - função atualizarResumoProgresso() -->
+                    <div class="progress-card">
+                        <h3>Cards criados</h3>
+                        <p class="progress-value" id="cardsCreated">0</p>
+                    </div>
+
+                    <!-- Card 2: Próxima revisão -->
+                    <!-- Mostra a data do próximo card a ser revisado -->
+                    <!-- Lógica: a cada 20 dias que um card é adicionado ao deck,
+                         esse card específico será o primeiro a aparecer em "Começar a revisão" -->
+                    <!-- Vinculado ao arquivo: js/script.js - função calcularProximaRevisao() -->
+                    <div class="progress-card">
+                        <h3>Próxima revisão (lembrete)</h3>
+                        <p class="progress-value" id="nextReview">Nenhuma</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== SEÇÃO 3: FORMULÁRIO DE CRIAÇÃO DE NOVO CARD ====== -->
+            <!-- Modal/Formulário para criar um novo flashcard -->
+            <!-- Este formulário fica oculto por padrão e aparece quando clica em "Criação de novo card" -->
+            <!-- Vinculado ao arquivo: js/script.js - funções abrirFormularioCriacao() e salvarNovoCard() -->
+            <section id="formModal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Criar novo card</h2>
+                        <!-- Botão para fechar o modal -->
+                        <button class="btn-close" onclick="fecharFormulario()">✕</button>
+                    </div>
+
+                    <!-- Formulário com campos para inserir dados do card -->
+                    <form id="cardForm" class="card-form">
+                        <!-- Campo 1: Palavra/termo em inglês -->
+                        <!-- Exemplo: width, height, function, etc. -->
+                        <!-- Obrigatório: sim -->
+                        <div class="form-group">
+                            <label for="wordEnglish">Palavra / termo (inglês)</label>
+                            <input 
+                                type="text" 
+                                id="wordEnglish" 
+                                placeholder="Ex: width" 
+                                required
+                            >
+                        </div>
+
+                        <!-- Campo 2: Frase em inglês (opcional) -->
+                        <!-- Uma breve descrição ou dica em inglês sobre a palavra -->
+                        <!-- Exemplo: "The dimension of an element" -->
+                        <!-- Obrigatório: não -->
+                        <div class="form-group">
+                            <label for="phraseEnglish">Frase em inglês – opcional</label>
+                            <textarea 
+                                id="phraseEnglish" 
+                                placeholder="Ex: The column width is one millimeter"
+                                rows="3"
+                            ></textarea>
+                        </div>
+
+                        <!-- Campo 3: Palavra/termo em português -->
+                        <!-- Tradução da palavra para português -->
+                        <!-- Exemplo: largura -->
+                        <!-- Obrigatório: sim -->
+                        <div class="form-group">
+                            <label for="wordPortuguese">Palavra / termo (português)</label>
+                            <input 
+                                type="text" 
+                                id="wordPortuguese" 
+                                placeholder="Ex: largura" 
+                                required
+                            >
+                        </div>
+
+                        <!-- Campo 4: Frase em português (opcional) -->
+                        <!-- Uma breve explicação ou contexto em português -->
+                        <!-- Exemplo: "A largura da coluna é de um milímetro" -->
+                        <!-- Obrigatório: não -->
+                        <div class="form-group">
+                            <label for="phrasePortuguese">Frase/termo em português</label>
+                            <textarea 
+                                id="phrasePortuguese" 
+                                placeholder="Ex: A largura da coluna é de um milímetro"
+                                rows="3"
+                            ></textarea>
+                        </div>
+
+                        <!-- Botões do formulário -->
+                        <div class="form-buttons">
+                            <!-- Botão para cancelar e fechar o formulário -->
+                            <button type="button" class="btn btn-secondary" onclick="fecharFormulario()">
+                                Cancelar
+                            </button>
+                            <!-- Botão para salvar o novo card -->
+                            <!-- Vinculado ao arquivo: js/script.js - função salvarNovoCard() -->
+                            <button type="submit" class="btn btn-primary">
+                                Adesionar novo card / salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ====================================
+         SCRIPTS JAVASCRIPT
+         ==================================== -->
+    <!-- Arquivo: js/utils.js - Funções utilitárias comuns a todas as páginas -->
+    <script src="js/utils.js"></script>
+    
+    <!-- Arquivo: js/script.js - Lógica principal da página inicial -->
+    <!-- Contém:
+         - abrirFormularioCriacao() - abre o modal de criação
+         - fecharFormulario() - fecha o modal
+         - salvarNovoCard() - salva um novo card no localStorage
+         - atualizarResumoProgresso() - atualiza os valores de progresso
+         - navegarPara() - redireciona para outra página
+    -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
