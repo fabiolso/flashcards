@@ -47,6 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se estamos na página inicial, atualiza o resumo
     if (document.getElementById('cardsCreated')) {
         atualizarResumoProgresso();
+        
+        // Verifica se há um card a ser editado (vindo de decks.html)
+        const cardIdParaEditar = sessionStorage.getItem('cardIdParaEditar');
+        if (cardIdParaEditar) {
+            console.log(`📝 Restaurando edição do card: ${cardIdParaEditar}`);
+            abrirFormularioEdicao(cardIdParaEditar);
+            // Remove o ID do sessionStorage para não repetir na próxima navegação
+            sessionStorage.removeItem('cardIdParaEditar');
+        }
     }
     
     // Se estamos na página de decks, carrega a lista
@@ -101,6 +110,16 @@ function abrirFormularioEdicao(id) {
         return;
     }
     
+    // Verifica se estamos ainda em decks.html
+    // Se sim, salva o ID no sessionStorage e navega para index.html
+    if (document.getElementById('cardsContainer')) {
+        console.log(`🔄 Preparando edição do card: ${card.wordEnglish}`);
+        sessionStorage.setItem('cardIdParaEditar', id);
+        navegarPara('index.html');
+        return;
+    }
+    
+    // Se chegou aqui, já estamos em index.html
     // Salva qual card está sendo editado
     cardEmEdicao = id;
     
@@ -116,9 +135,6 @@ function abrirFormularioEdicao(id) {
     
     // Muda o título para indicar edição
     document.querySelector('.modal-header h2').textContent = 'Editar card';
-    
-    // Volta para a página inicial
-    navegarPara('index.html');
     
     console.log(`✏️ Formulário de edição aberto para card: ${card.wordEnglish}`);
 }
