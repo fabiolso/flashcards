@@ -102,7 +102,7 @@ body {
 .btn {
     padding: 12px 24px;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -176,6 +176,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
 }
 
 .btn-close:hover {
